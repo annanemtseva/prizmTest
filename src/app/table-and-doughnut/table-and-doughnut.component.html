@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="block-table">
+    <table class="table">
+      <thead>
+      <tr>
+        <th (click)="sortByYear()">рік</th>
+        <th *ngFor="let item of columnNames" (click)="sort($event)">{{item}}</th>
+
+      </tr>
+      </thead>
+      <tbody >
+      <tr *ngFor="let row of rows ">
+        <th>{{row.year}}</th>
+        <td *ngFor="let column of columnNames">{{row.values.get(column) != 0 ? row.values.get(column) : ""}}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <th>всі</th>
+        <td *ngFor="let addition of total">{{addition}}</td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="block-chart">
+    <div class="chart-container" style="position: relative; height:40vh; width:70vw">
+      <canvas id="canvas"></canvas>
+      <div id='chartjsLegend' class='chartjsLegend'></div>
+    </div>
+  </div>
+</div>
