@@ -1,12 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpService, ITipes, Row} from '../http.service';
 import {Chart} from 'chart.js';
+
+import {HttpService, ITipes, Row} from '../http.service';
+
 
 @Component({
   selector: 'app-table-and-doughnut',
   templateUrl: './table-and-doughnut.component.html',
   styleUrls: ['./table-and-doughnut.component.scss']
 })
+
 export class TableAndDoughnutComponent implements OnInit {
   tipes: ITipes[] = [];
   columnNames: string[];
@@ -24,7 +27,7 @@ export class TableAndDoughnutComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.getData().subscribe(response => {
+      this.http.getData().subscribe(response => {
       this.tipes = response.Tipe;
       const raw = response.Tipe;
 
@@ -55,8 +58,6 @@ export class TableAndDoughnutComponent implements OnInit {
         return Object.values(it.count).reduce(reducer);
       });
 
-
-      // Chart.defaults.global.legend.labels.usePointStyle = true;
       this.chart = new Chart('canvas', {
         type: 'doughnut',
         data: {
@@ -73,12 +74,8 @@ export class TableAndDoughnutComponent implements OnInit {
                 '#00FFFF',
                 '#f990a7',
                 '#aad2ed',
-                '#FF00FF',
-                'White',
-                'Red',
-                'Blue'
+                '#FF00FF'
               ],
-              fill: true
             }
           ]
         },
@@ -100,8 +97,8 @@ export class TableAndDoughnutComponent implements OnInit {
           }
         }
       });
-      // document.getElementById('chartjsLegend').innerHTML = this.chart.generateLegend();
     });
+
   }
 
   sortByYear() {
@@ -129,4 +126,6 @@ export class TableAndDoughnutComponent implements OnInit {
 
     });
   }
+
+
 }

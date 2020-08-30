@@ -1,25 +1,58 @@
 .container {
   width: 90vw;
   margin: 0 auto;
+  display: flex;
+  flex-direction: row;
 
-  .block-chart,
-  .block-table {
+  .block-table,
+  .block-chart {
     border: #ebeffb solid 5px;
-    padding: 10px;
+
+    width: 50vw;
+    overflow: hidden;
   }
 
   .block-table {
-    width: 50vw;
-    overflow: hidden;
+    padding: 10px;
+
+    .title {
+      display: flex;
+      justify-content: stretch;
+      align-items: center;
+      margin: 10px 0 15px;
+
+      .logo {
+        background-image: url("../../assets/img.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+      }
+
+      h1 {
+        margin: 0;
+        color: #0c0e10;
+        font-size: 1.5em;
+        font-weight: normal;
+      }
+    }
 
     table {
-        thead {
-        width: calc( 100% - 15px );/* scrollbar is average 1em/16px width, remove it from thead width */
-        th{
-          font-size: 12px;
+      thead {
+        width: calc(100% - 15px);
+        background-color: #fbfcfe;
+        padding: 15px 0;
+
+        th {
+          font-size: 0.8em;
           font-weight: normal;
           color: #8c8e90;
         }
+        .sort{
+          cursor: pointer;
+        }
+
       }
 
       tbody {
@@ -27,21 +60,18 @@
         height: 300px;
         overflow-y: scroll;
         overflow-x: hidden;
-        th, tr{
+
+        th, tr {
           color: #676753;
           font-size: 14px;
           font-weight: normal;
         }
 
-        tr{
+        tr {
           width: 100%;
           padding: 10px 0;
           border-bottom: #ebeffb 1px solid;
         }
-        tr:first-child{
-          border-top: #ebeffb 1px solid;
-        }
-
       }
 
       thead, tbody tr, tfoot {
@@ -49,9 +79,12 @@
         table-layout: fixed;
         text-align: left;
       }
-      tfoot{
-        width: calc( 100% - 15px );/* scrollbar is average 1em/16px width, remove it from thead width */
-        th, tr{
+
+      tfoot {
+        width: calc(100% - 15px);
+        background-color: #fbfcfe;
+        padding: 15px 0;
+        th, tr {
           color: #676753;
           font-size: 14px;
           font-weight: normal;
@@ -59,5 +92,4 @@
       }
     }
   }
-
 }
